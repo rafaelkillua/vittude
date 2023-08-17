@@ -4,6 +4,8 @@
 
 $primary-color: #f26b5b;
 $breakpoints: (tablet: 768px, desktop: 992px, large: 1200px);
+$container-margin: 8.75rem;
+$navbar-height: 3.75rem;
 
 /* MIXINS */
 
@@ -27,6 +29,6 @@ body, html {
 }
 
 .container {
-  margin-left: 8.75rem;
-  margin-right: 8.75rem;
+  margin-left: $container-margin;
+  margin-right: $container-margin;
 }
