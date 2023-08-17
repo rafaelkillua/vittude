@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 2rem;
+  margin-top: 1.5rem;
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.menuItem {
+  color: white;
+  text-decoration: none;
+}

@@ -1,0 +1,25 @@
+.button {
+  padding: 1rem;
+  border-radius: 0.625rem;
+  border: 1px solid $primary-color;
+  cursor: pointer;
+}
+
+.contained {
+  color: white;
+  background-color: $primary-color;
+  
+  &:hover {
+    background-color: lighten($color: $primary-color, $amount: 10);
+    border-color: lighten($color: $primary-color, $amount: 10);
+  }
+}
+
+.outlined {
+  color: $primary-color;
+  background-color: white;
+
+  &:hover {
+    background-color: lighten($color: $primary-color, $amount: 30);
+  }
+}
