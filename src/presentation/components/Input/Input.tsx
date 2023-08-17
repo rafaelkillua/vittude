@@ -4,8 +4,8 @@ import classNames from "classnames/bind"
 import { IInputProps } from "@/domain"
 import styles from './Input.module.scss'
 
-import eye from '@/presentation/assets/eye.svg'
-import eyeHide from '@/presentation/assets/eye-hide.svg'
+import eye from '@/presentation/assets/icons/eye.svg'
+import eyeHide from '@/presentation/assets/icons/eye-hide.svg'
 
 const cx = classNames.bind(styles)
 
