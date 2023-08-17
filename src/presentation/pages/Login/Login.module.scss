@@ -1,0 +1,18 @@
+.main {
+  min-height: 100vh;
+  background: linear-gradient(90deg, white 50%, $primary-color 50%), url('../../assets/banner.svg') 50% 50%;
+}
+
+.container {
+  width: calc(50% - 17.5rem);
+  height: calc(100vh - 3.75rem);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title {
+  margin-bottom: 3rem;
+  width: 16rem;
+  font-size: 3rem;
+}
