@@ -1,15 +1,26 @@
 .main {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(90deg, white 50%, $primary-color 50%);
+
+  @include breakpoint(tablet) {
+    background: linear-gradient(90deg, white 50%, $primary-color 50%);
+  }
 }
 
 .container {
-  width: calc(50% - 2*$container-margin);
+  width: calc(100% - 2*$container-margin-small);
   height: calc(100vh - $navbar-height);
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @include breakpoint(tablet) {
+    width: calc(50% - 2*$container-margin-medium);
+  }
+
+  @include breakpoint(large) {
+    width: calc(50% - 2*$container-margin-large);
+  }
 }
 
 .title {
@@ -20,8 +31,23 @@
 }
 
 .banner {
-  position: absolute;
-  left: 75%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  display: none;
+
+  @include breakpoint(tablet) {
+    display: block;
+    position: absolute;
+    left: 75%;
+    top: 50%;
+    transform-origin: 0 0;
+    transform: scale(0.5) translate(-50%, -50%);
+    transition: transform $animation-timing;
+  }
+
+  @include breakpoint(desktop) {
+    transform: scale(0.8) translate(-50%, -50%);
+  }
+
+  @include breakpoint(large) {
+    transform: translate(-50%, -50%);
+  }
 }

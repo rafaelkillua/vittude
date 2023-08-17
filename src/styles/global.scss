@@ -4,8 +4,11 @@
 
 $primary-color: #f26b5b;
 $breakpoints: (tablet: 768px, desktop: 992px, large: 1200px);
-$container-margin: 8.75rem;
+$container-margin-small: 1rem;
+$container-margin-medium: 3.5rem;
+$container-margin-large: 8.75rem;
 $navbar-height: 3.75rem;
+$animation-timing: 133ms;
 
 /* MIXINS */
 
@@ -29,6 +32,16 @@ body, html {
 }
 
 .container {
-  margin-left: $container-margin;
-  margin-right: $container-margin;
+  margin-left: $container-margin-small;
+  margin-right: $container-margin-small;
+  
+  @include breakpoint(tablet) {
+    margin-left: $container-margin-medium;
+    margin-right: $container-margin-medium;
+  }
+
+  @include breakpoint(large) {
+    margin-left: $container-margin-large;
+    margin-right: $container-margin-large;
+  }
 }
