@@ -1,6 +1,8 @@
 import { createRoot } from "react-dom/client"
 import { makeLoginPage } from "./main/factories/pages/LoginPageFactory"
 
+import 'react-toastify/dist/ReactToastify.css'
+
 const el = document.getElementById('root')
 
 if (el) {
