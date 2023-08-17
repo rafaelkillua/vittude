@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form"
 import classNames from "classnames/bind"
 
 import { Button, Input } from "@/presentation/components"
-import type { ILoginFormProps, ILoginFormFields } from "@/domain"
+import { type ILoginFormProps, type ILoginFormFields, ToastTypes } from "@/domain"
 import styles from './LoginForm.module.scss'
 
 const cx = classNames.bind(styles)
 
-export const LoginForm: FC<ILoginFormProps> = ({ authService }) => {
+export const LoginForm: FC<ILoginFormProps> = ({ authService, showToast }) => {
   const { register, handleSubmit } = useForm<ILoginFormFields>({
     defaultValues: {
       username: '',
@@ -20,8 +20,10 @@ export const LoginForm: FC<ILoginFormProps> = ({ authService }) => {
     try {
       const res = await authService.auth(form.username, form.password)
       console.log(res.token)
+      showToast({ message: 'Logado com sucesso!', type: ToastTypes.success })
     } catch (error) {
       console.error(error)
+      showToast({ message: (error as Error).message, type: ToastTypes.error })
     }
   }
 
