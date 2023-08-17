@@ -10,10 +10,11 @@ import eyeHide from '@/presentation/assets/icons/eye-hide.svg'
 const cx = classNames.bind(styles)
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>(function Input(props, ref) {
-  const { id, className, label, type, ...rest } = props
+  const { id, className, label, type, errorMessage, ...rest } = props
 
   const uid = useId()
   const inputId = id ?? uid
+  const hintId = `${inputId}-hint`
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -28,10 +29,20 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(function Input(pr
     return type
   }, [type, showPassword])
 
+  const hasError = useMemo(() => !!errorMessage, [errorMessage])
+
   return (
     <div className={cx(styles.inputContainer, className)}>
       <label className={styles.label} htmlFor={inputId}>{label}</label>
-      <input className={styles.input} id={inputId} ref={ref} type={inputType} {...rest} />
+      <input
+        className={cx(styles.input, { [styles.error]: hasError })}
+        id={inputId}
+        ref={ref}
+        type={inputType}
+        aria-errormessage={hintId}
+        aria-invalid={hasError}
+        {...rest}
+      />
       {type === 'password' && (
         <img
           className={styles.showPasswordIcon}
@@ -40,6 +51,9 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(function Input(pr
           aria-hidden
         />
       )}
+      <div className={styles.hint} id={hintId}>
+        {errorMessage}
+      </div>
     </div>
   )
 })

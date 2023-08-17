@@ -9,7 +9,7 @@ import styles from './LoginForm.module.scss'
 const cx = classNames.bind(styles)
 
 export const LoginForm: FC<ILoginFormProps> = ({ authService, showToast }) => {
-  const { register, handleSubmit } = useForm<ILoginFormFields>({
+  const { register, handleSubmit, formState: { errors } } = useForm<ILoginFormFields>({
     defaultValues: {
       username: '',
       password: ''
@@ -31,17 +31,19 @@ export const LoginForm: FC<ILoginFormProps> = ({ authService, showToast }) => {
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <form className={cx(styles.form)} onSubmit={handleSubmit(submit)}>
       <Input
-        {...register('username')}
+        {...register('username', { required: 'Login obrigatório' })}
         className={styles.input}
         label="Login"
         placeholder="email@exemplo.com"
+        errorMessage={errors.username?.message}
       />
       <Input
-        {...register('password')}
+        {...register('password', { required: 'Senha obrigatória' })}
         className={styles.input}
         label="Senha"
         placeholder="······"
         type="password"
+        errorMessage={errors.password?.message}
       />
       <Button className={styles.button} type="submit">
         Acessar
