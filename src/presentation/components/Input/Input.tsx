@@ -41,6 +41,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(function Input(pr
         type={inputType}
         aria-errormessage={hintId}
         aria-invalid={hasError}
+        role="textbox"
         {...rest}
       />
       {type === 'password' && (

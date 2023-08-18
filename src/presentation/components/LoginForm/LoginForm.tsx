@@ -29,7 +29,7 @@ export const LoginForm: FC<ILoginFormProps> = ({ authService, showToast }) => {
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    <form className={cx(styles.form)} onSubmit={handleSubmit(submit)}>
+    <form className={cx(styles.form)} onSubmit={handleSubmit(submit)} aria-label="Formulário de login">
       <Input
         {...register('username', { required: 'Login obrigatório' })}
         className={styles.input}

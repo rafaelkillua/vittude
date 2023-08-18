@@ -27,19 +27,19 @@ export const NavBar: FC = () => {
   ), [])
 
   return (
-    <div className={styles.container}>
+    <nav className={styles.container}>
       <img className={styles.logo} src={logo} alt="Logo da Vittude" />
 
       <div className={styles.menuDesktop}>
         {renderMenu}
       </div>
       <div className={styles.menuMobile}>
-        <img className={styles.menuMobileIcon} src={iconMenu} onClick={() => { setShowMenu(true) }} />
-        <div className={cx(styles.bottomSheet, showMenu && styles.bottomSheetOpen)}>
-          {showMenu && createPortal(<div className={styles.backdrop} onClick={() => { setShowMenu(false) }} />, document.body)}
+        <img className={styles.menuMobileIcon} src={iconMenu} onClick={() => { setShowMenu(true) }} aria-label="Open menu" />
+        <div className={cx(styles.bottomSheet, showMenu && styles.bottomSheetOpen)} role="bottom sheet">
+          {showMenu && createPortal(<div className={styles.backdrop} onClick={() => { setShowMenu(false) }} role="backdrop" />, document.body)}
           {renderMenu}
         </div>
       </div>
-    </div>
+    </nav>
   )
 }
