@@ -1,6 +1,6 @@
 import { HTMLProps } from "react"
 
-export interface IInputProps extends HTMLProps<HTMLInputElement> {
+export interface IInputProps extends Omit<HTMLProps<HTMLInputElement>, 'ref'> {
   label?: string
   errorMessage?: string
 }
